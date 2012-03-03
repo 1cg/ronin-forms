@@ -7,4 +7,7 @@ class DummyController extends RoninController {
   function foo() {
   }
 
+  function bar(str:String) {
+  }
+
 }

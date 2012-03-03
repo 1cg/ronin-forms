@@ -3,6 +3,7 @@ package roflmao
 uses ronin.*
 uses java.util.Map
 uses java.util.Stack
+uses gw.lang.reflect.IParameterInfo
 
 class ROFLMAOHelper extends RoninTemplate {
 
@@ -25,8 +26,13 @@ class ROFLMAOHelper extends RoninTemplate {
     return stack
   }
   
-  static function input( target : Object ) : String {
-    return "<input/>"    
+  static function input(target : Object) : String {
+    if(target typeis IParameterInfo){
+      //TODO -- verify that the parameter comes from the current target?
+      return "<input name='${target.Name}'/>"
+    } else {
+      return "<input/>"
+    }
   }
   
   static function submit(label : String, html : Map = null) : String {

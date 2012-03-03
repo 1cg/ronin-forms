@@ -21,4 +21,10 @@ class ROFLMAOBootstrapTest extends TestCase {
     }
   }
 
+  function testRawInputMethod() {
+    using (RoninTest.request()) {
+      assertEquals("<input name='str'/>", RoninTemplate.input(DummyController#bar().$str))
+    }
+  }
+
 }
