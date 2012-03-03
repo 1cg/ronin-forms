@@ -11,15 +11,13 @@ class ROFLMAOBootstrapTest extends TestCase {
 
   function testRawLinkMethod() {
     using (RoninTest.request()) {
-      Assert.assertEquals("<a href='http://localhost/DummyController/foo'>Merp</a>",
-                          RoninTemplate.link("Merp", DummyController#foo()))
+      assertEquals("<a href='http://localhost/DummyController/foo'>Merp</a>", RoninTemplate.link("Merp", DummyController#foo()))
     }
   }
 
   function testLinkWithinTemplate(){
     using (RoninTest.request()) {
-      Assert.assertEquals("<a href='http://localhost/DummyController/foo'>Merp</a>",
-                          SimpleLink.renderToString())
+      assertEquals("\n<a href='http://localhost/DummyController/foo'>Merp</a>", SimpleLink.renderToString())
     }
   }
 
