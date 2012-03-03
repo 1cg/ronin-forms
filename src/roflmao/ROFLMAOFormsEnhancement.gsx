@@ -18,8 +18,11 @@ enhancement ROFLMAOFormsEnhancement: IRoninUtils {
     return ROFLMAOHelper.link(text, target, html)
   }
 
-  static function endForm() : String {
-    return ROFLMAOHelper.endForm()
+  static property get endForm() : String {
+    return ROFLMAOHelper.endForm
   }
 
+  static function submit(label : String, html : Map = null) : String {
+    return ROFLMAOHelper.submit(label, html)
+  }
 }
