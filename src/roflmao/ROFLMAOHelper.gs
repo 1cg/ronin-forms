@@ -1,32 +1,32 @@
 package roflmao
 
 uses ronin.*
-uses java.util.Map
 uses java.util.Stack
 uses gw.lang.reflect.IParameterInfo
+uses java.util.LinkedHashMap
 
-class ROFLMAOHelper extends RoninTemplate {
+class ROFLMAOHelper {
 
   static final var ROFLMAO_STACK_SLOT = "$$$ROFLMAO_STACK_SLOT$$$$"
 
   // TODO check and include the XSRFToken (but DON'T generate it if the user hasn't said so)
   static function form(target : gw.lang.reflect.features.MethodReference) : String {
-    var formTarget = target(target)
+    var formTarget = RoninTemplate.target(target)
     formTarget.enter()
     ROFLMAOStack.push(formTarget)
-    return "<form action='${URLUtil.urlFor(target)}'
+    return "<form action='${URLUtil.urlFor(target)}'"
   }
   
   private static property get ROFLMAOStack() : Stack<ronin.RoninTemplate.FormTarget> {
-    var stack = RoninRequest.HttpRequest.getAttribute(ROFLMAO_STACK_SLOT) as Stack<ronin.RoninTemplate.FormTarget>
+    var stack = RoninTemplate.RoninRequest.HttpRequest.getAttribute(ROFLMAO_STACK_SLOT) as Stack<ronin.RoninTemplate.FormTarget>
     if(stack == null) {
       stack = new()
-      RoninRequest.HttpRequest.setAttribute(ROFLMAO_STACK_SLOT, stack)
+      RoninTemplate.RoninRequest.HttpRequest.setAttribute(ROFLMAO_STACK_SLOT, stack)
     }
     return stack
   }
   
-  static function input(target : Object) : String {
+  static function input(target : Object, value : Object = "$#$NO_VALUE_ROFLMAO$#$" ) : String {
     if(target typeis IParameterInfo){
       //TODO -- verify that the parameter comes from the current target?
       return "<input name='${target.Name}'/>"
@@ -34,20 +34,20 @@ class ROFLMAOHelper extends RoninTemplate {
       return "<input/>"
     }
   }
-  
-  static function submit(label : String, html : Map = null) : String {
+
+  static function submit(label : String, html : LinkedHashMap = null) : String {
     return "<input type='submit' value='${label}'${format(html)}/>"
   }
 
-  static function link(text : String, target : gw.lang.reflect.features.MethodReference, html : Map = null) : String {
-    return "<a href='${URLUtil.urlFor(target)}'${format(html)}>${h(text)}</a>
+  static function link(text : String, target : gw.lang.reflect.features.MethodReference, html : LinkedHashMap = null) : String {
+    return "<a href='${URLUtil.urlFor(target)}'${format(html)}>${RoninTemplate.h(text)}</a>"
   }
 
-  private static function format(html : Map) : String {
+  private static function format(html : LinkedHashMap) : String {
     if(html == null) {
       return ""
     } else {
-      return " " + html.entrySet().orderBy( \ elt -> elt.Key?.toString() ).map( \ elt -> elt.Key + '="' + elt.Value + '"').join(" ")
+      return " " + html.entrySet().map( \ elt -> elt.Key + "='" + elt.Value + "'").join(" ")
     }
   }
 

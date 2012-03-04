@@ -3,6 +3,7 @@ package roflmao
 uses ronin.*
 uses gw.lang.reflect.features.*
 uses java.util.Map
+uses java.util.LinkedHashMap
 
 enhancement ROFLMAOFormsEnhancement: IRoninUtils {
 
@@ -14,7 +15,7 @@ enhancement ROFLMAOFormsEnhancement: IRoninUtils {
     return ROFLMAOHelper.input(target)
   }
 
-  static function link(text: String, target: gw.lang.reflect.features.MethodReference, html: Map = null): String {
+  static function link(text: String, target: gw.lang.reflect.features.MethodReference, html: LinkedHashMap = null): String {
     return ROFLMAOHelper.link(text, target, html)
   }
 
@@ -22,7 +23,7 @@ enhancement ROFLMAOFormsEnhancement: IRoninUtils {
     return ROFLMAOHelper.endForm
   }
 
-  static function submit(label : String, html : Map = null) : String {
+  static function submit(label : String, html : LinkedHashMap = null) : String {
     return ROFLMAOHelper.submit(label, html)
   }
 }
