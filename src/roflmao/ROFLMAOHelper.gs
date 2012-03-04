@@ -14,7 +14,7 @@ class ROFLMAOHelper extends RoninTemplate {
     var formTarget = target(target)
     formTarget.enter()
     ROFLMAOStack.push(formTarget)
-    return "<form action='${URLUtil.urlFor(target)}'
+    return "<form action='${URLUtil.urlFor(target)}'"
   }
   
   private static property get ROFLMAOStack() : Stack<ronin.RoninTemplate.FormTarget> {
@@ -40,7 +40,7 @@ class ROFLMAOHelper extends RoninTemplate {
   }
 
   static function link(text : String, target : gw.lang.reflect.features.MethodReference, html : Map = null) : String {
-    return "<a href='${URLUtil.urlFor(target)}'${format(html)}>${h(text)}</a>
+    return "<a href='${URLUtil.urlFor(target)}'${format(html)}>${h(text)}</a>"
   }
 
   private static function format(html : Map) : String {
