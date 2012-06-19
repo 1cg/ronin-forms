@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.gosu-lang.ronin</groupId>
-    <artifactId>roflmao</artifactId>
+    <artifactId>ronin-forms</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -24,9 +24,9 @@
     </repositories>
 
     <scm>
-        <connection>scm:git:git@github.com:carsongross/roflmao.git</connection>
-        <url>scm:git:git@github.com:carsongross/roflmao.git</url>
-        <developerConnection>scm:git:git@github.com:carsongross/roflmao.git</developerConnection>
+        <connection>scm:git:git@github.com:carsongross/ronin-forms.git</connection>
+        <url>scm:git:git@github.com:carsongross/ronin-forms.git</url>
+        <developerConnection>scm:git:git@github.com:carsongross/ronin-forms.git</developerConnection>
     </scm>
 
     <dependencies>

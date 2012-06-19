@@ -1,29 +1,29 @@
-package roflmao
+package ronin_forms
 
 uses ronin.*
 uses gw.lang.reflect.features.*
 uses java.util.Map
 uses java.util.LinkedHashMap
 
-enhancement ROFLMAOFormsEnhancement: IRoninUtils {
+enhancement RoninFormsEnhancement: IRoninUtils {
 
   static function form(target: gw.lang.reflect.features.MethodReference): String {
-    return ROFLMAOHelper.form(target)
+    return RoninFormsHelper.form(target)
   }
 
   static function input(target: Object): String {
-    return ROFLMAOHelper.input(target)
+    return RoninFormsHelper.input(target)
   }
 
   static function link(text: String, target: gw.lang.reflect.features.MethodReference, html: LinkedHashMap = null): String {
-    return ROFLMAOHelper.link(text, target, html)
+    return RoninFormsHelper.link(text, target, html)
   }
 
   static property get endForm() : String {
-    return ROFLMAOHelper.endForm
+    return RoninFormsHelper.endForm
   }
 
   static function submit(label : String, html : LinkedHashMap = null) : String {
-    return ROFLMAOHelper.submit(label, html)
+    return RoninFormsHelper.submit(label, html)
   }
 }

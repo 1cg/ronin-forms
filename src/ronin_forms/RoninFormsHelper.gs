@@ -1,32 +1,32 @@
-package roflmao
+package ronin_forms
 
 uses ronin.*
 uses java.util.Stack
 uses gw.lang.reflect.IParameterInfo
 uses java.util.LinkedHashMap
 
-class ROFLMAOHelper {
+class RoninFormsHelper {
 
-  static final var ROFLMAO_STACK_SLOT = "$$$ROFLMAO_STACK_SLOT$$$$"
+  static final var RONIN_FORMS_STACK_SLOT = "$$$RONIN_FORMS_STACK_SLOT$$$$"
 
   // TODO check and include the XSRFToken (but DON'T generate it if the user hasn't said so)
   static function form(target : gw.lang.reflect.features.MethodReference) : String {
     var formTarget = RoninTemplate.target(target)
     formTarget.enter()
-    ROFLMAOStack.push(formTarget)
+    RoninFormsStack.push(formTarget)
     return "<form action='${URLUtil.urlFor(target)}'"
   }
   
-  private static property get ROFLMAOStack() : Stack<ronin.RoninTemplate.FormTarget> {
-    var stack = RoninTemplate.RoninRequest.HttpRequest.getAttribute(ROFLMAO_STACK_SLOT) as Stack<ronin.RoninTemplate.FormTarget>
+  private static property get RoninFormsStack() : Stack<ronin.RoninTemplate.FormTarget> {
+    var stack = RoninTemplate.RoninRequest.HttpRequest.getAttribute(RONIN_FORMS_STACK_SLOT) as Stack<ronin.RoninTemplate.FormTarget>
     if(stack == null) {
       stack = new()
-      RoninTemplate.RoninRequest.HttpRequest.setAttribute(ROFLMAO_STACK_SLOT, stack)
+      RoninTemplate.RoninRequest.HttpRequest.setAttribute(RONIN_FORMS_STACK_SLOT, stack)
     }
     return stack
   }
   
-  static function input(target : Object, value : Object = "$#$NO_VALUE_ROFLMAO$#$" ) : String {
+  static function input(target : Object, value : Object = "$#$NO_VALUE_RONIN_FORMS$#$" ) : String {
     if(target typeis IParameterInfo){
       //TODO -- verify that the parameter comes from the current target?
       return "<input name='${target.Name}'/>"
@@ -52,7 +52,7 @@ class ROFLMAOHelper {
   }
 
   static property get endForm() : String {
-    ROFLMAOStack.pop().exit()
+    RoninFormsStack.pop().exit()
     return "</form>"
   }
 }

@@ -1,7 +1,7 @@
-ROnin Form Library for Managing Application Objects
+Ronin Forms
 ===================================================
 
-ROFLMAO makes it easy to create HTML forms within the [Ronin](http://ronin-web.org) web framework.  It adds methods
+ronin-forms makes it easy to create HTML forms within the [Ronin](http://ronin-web.org) web framework.  It adds methods
 to the standard `ronin.RoninTemplate`, allowing you to quickly output a well-constructed form that is bound to a remote
 Ronin controller method:
 

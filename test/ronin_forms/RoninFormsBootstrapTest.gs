@@ -1,13 +1,13 @@
-package roflmao
+package ronin_forms
 
 uses org.junit. *
 uses controller. *
 uses ronin.*
 uses ronin.test. *
 uses junit.framework.TestCase
-uses roflmao.examples.*
+uses ronin_forms.examples.*
 
-class ROFLMAOBootstrapTest extends TestCase {
+class RoninFormsBootstrapTest extends TestCase {
 
   function testRawLinkMethod() {
     using (RoninTest.request()) {
